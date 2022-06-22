@@ -1,11 +1,8 @@
 import express from 'express';
+import WeatherController from '../controllers/weather.controller.js';
+
 const router = express.Router();
 
-
-router.post("/test", function (req, res) {
-  res.json({
-    "message": "hello world"
-  })
-});
+router.get("/weather", WeatherController.getAll);
 
 export default router;
