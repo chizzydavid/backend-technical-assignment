@@ -9,7 +9,8 @@ const findOne = async (atTime) => {
         [Op.gte]: atTime
       }
     },
-    attributes: { exclude: ['weatherId'] }
+    attributes: { exclude: ['weatherId'] },
+    order: [['createdAt', 'DESC']]
   });
   return data;
 }

@@ -12,7 +12,6 @@ export const getStationSnapshot = async () => {
       );
     });
     await Promise.all(snapshots);
-    console.log(':::: stations information pulled ')
   } catch(error) {
     console.log(error)
   }
@@ -22,7 +21,6 @@ export const getWeatherSnapshot = async () => {
   try {
     const data = await fetchWeatherData();
     await Weather.create({ ...data });
-    console.log('::::  weather information pulled ')
   } catch(error) {
     console.log(error)
   }

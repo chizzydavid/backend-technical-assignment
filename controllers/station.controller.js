@@ -9,7 +9,7 @@ const getAllStationsSnapshot = async (req, res, next) => {
     const weather = await WeatherService.findOne(atTime);
 
     if (!stations || stations.length === 0) {
-      return  res.status(404).json({ 
+      return res.status(404).json({ 
         error: 'No stations found for specified time' 
       });
     }
@@ -21,7 +21,6 @@ const getAllStationsSnapshot = async (req, res, next) => {
       }
      });
   } catch(error) {
-    console.log(`error fetching data ${error}`)
     next(error)
   }
 }
@@ -35,7 +34,7 @@ const getOneStationSnapshot = async (req, res, next) => {
     const weather = await WeatherService.findOne(atTime);
 
     if (!station) {
-      return  res.status(404).json({ 
+      return res.status(404).json({ 
         error: 'No station found for kioskId at specified time' 
       });
     }    
@@ -47,7 +46,6 @@ const getOneStationSnapshot = async (req, res, next) => {
       }
      });
   } catch(error) {
-    console.log(`error fetching data ${error}`)
     next(error)
   }
 }

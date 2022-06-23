@@ -2,8 +2,6 @@ import axios from 'axios';
 import INDEGO_CONFIG from '../config/indego.config.js';
 import WEATHER_CONFIG from '../config/weather.config.js';
 
-
-
 const headers = {
   'Content-Type': 'application/json'
 }
@@ -25,25 +23,17 @@ export const fetchWeatherData = async () => {
   try {
     const { BASE_URL: WEATHER_URL, API_KEY, CITY_COORDINATES } =  WEATHER_CONFIG;
     const { lat, long } = CITY_COORDINATES;
-    const openWeatherUrl = `${WEATHER_URL}lat=${lat}&lon=${long}&appId=${API_KEY}`;
+    const result = await axios.get('/data/2.5/weather', {
+      baseURL: WEATHER_URL,
+      params: {
+        lat: lat,
+        lon: long,
+        appid: API_KEY,
+        units: 'metric',
+      },
+      headers
+    });
 
-
-
-    // try {
-    //   const res = await axios.get('/data/2.5/weather', {
-    //     baseURL: this.OPEN_WEATHER_MAP_API_URL,
-    //     params: {
-    //       lat: this.philadelphiaLatitude,
-    //       lon: this.philadelphiaLongitude,
-    //       appid: this.OPEN_WEATHER_MAP_API_KEY,
-    //       units: 'metric',
-    //     },
-    //   });
-
-
-
-    
-    const result = await axios.get(openWeatherUrl, { headers });
     return result.data;
   } catch(err) {
     const error = err.response.data.message ?? err.message

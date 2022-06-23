@@ -5,7 +5,7 @@ const getWeatherSnapshot = async (req, res, next) => {
     const { at: atTime } = req.query;
     const weather = await WeatherService.findOne(atTime);
     if (!weather) {
-      return  res.status(404).json({ 
+      return res.status(404).json({ 
         error: 'weather at specified timestamp not found' 
       });
     }
