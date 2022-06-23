@@ -7,6 +7,12 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
+/**
+ * Fetches and saves Station Snapshots to the Database
+ *
+ * @returns {Object}
+ */
+
 export const fetchIndegoStations = async () => {
   try {
     const { BASE_URL, STATION } = INDEGO_CONFIG;
@@ -27,6 +33,12 @@ export const fetchIndegoStations = async () => {
   }
 }
 
+
+/**
+ * Fetches and saves Weather Snapshots to the Database
+ *
+ * @returns {Object}
+ */
 export const fetchWeatherData = async () => {
   try {
     const { BASE_URL: WEATHER_URL, API_KEY, CITY_COORDINATES } =  WEATHER_CONFIG;

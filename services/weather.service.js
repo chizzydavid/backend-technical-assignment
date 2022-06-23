@@ -1,7 +1,12 @@
 import { Op } from 'sequelize'
 import Weather from '../models/weather.model.js';
 
-
+/**
+ * Retrieves Weather Information for passed timestamp
+ *
+ * @param {string} atTime
+ * @returns {Object}
+ */
 const findOne = async (atTime) => {
   const data = await Weather.findOne({
     where: {

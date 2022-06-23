@@ -1,11 +1,11 @@
 
 /**
- * Init Express Error Handling Middleware
+ * Express Error Handling Middleware
  *
- * @param {error} object
+ * @param {object} error
  * @param {request} request
  * @param {response} reponse
- * @param {next} function
+ * @param {function} next
  * @returns {void}
  */
 export const errorHandler = (error, request, response, next) => {
@@ -33,7 +33,7 @@ export const errorHandler = (error, request, response, next) => {
  *
  * @param {request} request
  * @param {response} reponse
- * @param {next} function
+ * @param {function} next
  * @returns {void}
  */
 

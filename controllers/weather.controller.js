@@ -1,5 +1,13 @@
 import WeatherService from "../services/weather.service.js"
 
+/**
+ * Fetches Weather Snapshot for Passed Timestamp
+ *
+ * @param {request} request
+ * @param {response} reponse
+ * @param {function} next
+ * @returns {void}
+ */
 const getWeatherSnapshot = async (req, res, next) => {
   try {
     const { at: atTime } = req.query;

@@ -1,7 +1,14 @@
 import StationService from "../services/station.service.js"
 import WeatherService from "../services/weather.service.js"
 
-
+/**
+ * Fetches all Station Snapshots for Passed Timestamp
+ *
+ * @param {request} request
+ * @param {response} reponse
+ * @param {function} next
+ * @returns {Object}
+ */
 const getAllStationsSnapshot = async (req, res, next) => {
   try {
     const { at: atTime } = req.query;
@@ -25,7 +32,14 @@ const getAllStationsSnapshot = async (req, res, next) => {
   }
 }
 
-
+/**
+ * Fetches Snapshot for Single Kiosk/Station
+ *
+ * @param {request} request
+ * @param {response} reponse
+ * @param {function} next
+ * @returns {void}
+ */
 const getOneStationSnapshot = async (req, res, next) => {
   try {
     const { at: atTime } = req.query;

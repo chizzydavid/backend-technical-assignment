@@ -7,6 +7,7 @@ export const sequelize = new Sequelize(DB_URI, DB_OPTIONS);
 
 export default async () => {
   return new Promise((resolve, reject) => {
+    
     sequelize.authenticate().then(() => {
       console.log('Database connection established successfully');
       resolve();
