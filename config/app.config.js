@@ -1,6 +1,9 @@
 import { config } from 'dotenv';
 config();
 
+// const dotenv = require('dotenv');
+// dotenv.config()
+
 const { 
   NODE_ENV, 
   DB_HOST,
@@ -13,6 +16,7 @@ const {
 
 
 export default {
+// module.exports = {
   ENV: NODE_ENV,
   PORT: process.env.PORT,
   DB_USER,

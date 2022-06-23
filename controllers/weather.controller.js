@@ -1,13 +1,27 @@
-import Weather from "../models/weather.model.js"
+import WeatherService from "../services/weather.service.js"
 
-
-const getAll = async (req, res, nex) => {
-  const data = await Weather.findAll({});
-  res.status(200).json(data);
+const getWeatherSnapshot = async (req, res, next) => {
+  try {
+    const { at: atTime } = req.query;
+    const weather = await WeatherService.findOne(atTime);
+    if (!weather) {
+      return  res.status(404).json({ 
+        error: 'weather at specified timestamp not found' 
+      });
+    }
+    res.status(200).json({ 
+      data: {
+        at: weather.createdAt,
+        weather
+      }
+     });
+  } catch(error) {
+    console.log(`error fetching data ${error}`)
+    next(error) 
+  }
 }
 
 export default {
-  getAll
+  getWeatherSnapshot
 }
-
 

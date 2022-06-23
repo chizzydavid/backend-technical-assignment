@@ -7,10 +7,9 @@ const Station = sequelize.define(
   {
     stationId: {
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
-      autoIncrement: false,
-      defaultValue: Sequelize.literal('gen_random_uuid')
     },
     id: {
       type: DataTypes.INTEGER,
@@ -26,35 +25,35 @@ const Station = sequelize.define(
     },  
     totalDocks: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     docksAvailable: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     bikesAvailable: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },            
     classicBikesAvailable: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    },    
+      allowNull: true
+    },
     smartBikesAvailable: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     }, 
     electricBikesAvailable: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     rewardBikesAvailable: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     rewardDocksAvailable: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     kioskStatus: {
       type: DataTypes.STRING,
@@ -70,7 +69,7 @@ const Station = sequelize.define(
     },
     kioskType: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },    
     addressStreet: {
       type: DataTypes.STRING,
@@ -136,19 +135,20 @@ const Station = sequelize.define(
     },
     trikesAvailable: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     latitude: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     longitude: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     }
   },
   {
     timestamps: true,
+    tableName: 'Station'
   }
 );
 
