@@ -24,4 +24,3 @@ server.on('close', () => {
   console.log('Application server closed');
 });
 
-

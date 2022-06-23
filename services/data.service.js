@@ -1,6 +1,7 @@
 import axios from 'axios';
 import INDEGO_CONFIG from '../config/indego.config.js';
 import WEATHER_CONFIG from '../config/weather.config.js';
+import Batch from '../models/batch.model.js';
 
 const headers = {
   'Content-Type': 'application/json'
@@ -11,8 +12,15 @@ export const fetchIndegoStations = async () => {
     const { BASE_URL, STATION } = INDEGO_CONFIG;
     const indegoUrl = `${BASE_URL}${STATION}`;
     
+    const newBatch = await Batch.create();
+    const { batchId } = newBatch.get({ plain: true })
+    
     const result = await axios.get(indegoUrl, { headers });
-    return result.data.features;
+    const data = result.data.features.map((station) => {
+      station.properties.batchId = batchId;
+      return station;
+    });
+    return data; 
   } catch(err) {
     const error = err.response.data.message ?? err.message
     throw new Error(`Failed to get stations data ${error}`)
